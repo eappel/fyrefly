@@ -14,6 +14,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         println("FYREFLY")
+        
+        //  Create reference to Firebase location
+        var myRootRef = Firebase(url: kFirebaseURL)
+        //  Write data to Firebase
+        myRootRef.setValue("FIREBASE DATA!!!")
+        
+        //  Read data and react to changes
+        myRootRef.observeEventType(.Value, withBlock: {
+            snapshot in
+            println("\(snapshot.name) -> \(snapshot.value)")
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

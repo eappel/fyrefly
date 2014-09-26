@@ -13,6 +13,13 @@
 		C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FD19D6307600117FDA /* Images.xcassets */; };
 		C0FF590119D6307600117FDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FF19D6307600117FDA /* LaunchScreen.xib */; };
 		C0FF590D19D6307600117FDA /* FyreflyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF590C19D6307600117FDA /* FyreflyTests.swift */; };
+		C0FF591D19D6328200117FDA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF591C19D6328200117FDA /* Constants.swift */; };
+		C0FF591F19D6334300117FDA /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF591E19D6334300117FDA /* Firebase.framework */; };
+		C0FF592119D6336A00117FDA /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592019D6336A00117FDA /* libicucore.dylib */; };
+		C0FF592319D6337C00117FDA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592219D6337C00117FDA /* libc++.dylib */; };
+		C0FF592519D6338300117FDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592419D6338300117FDA /* CFNetwork.framework */; };
+		C0FF592819D6339800117FDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592719D6339800117FDA /* Security.framework */; };
+		C0FF592A19D633A400117FDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592919D633A400117FDA /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,14 @@
 		C0FF590619D6307600117FDA /* FyreflyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FyreflyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF590B19D6307600117FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0FF590C19D6307600117FDA /* FyreflyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyreflyTests.swift; sourceTree = "<group>"; };
+		C0FF591C19D6328200117FDA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C0FF591E19D6334300117FDA /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		C0FF592019D6336A00117FDA /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		C0FF592219D6337C00117FDA /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		C0FF592419D6338300117FDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C0FF592719D6339800117FDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C0FF592919D633A400117FDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C0FF592B19D6340900117FDA /* Fyrefly-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fyrefly-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +58,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FF592A19D633A400117FDA /* SystemConfiguration.framework in Frameworks */,
+				C0FF592819D6339800117FDA /* Security.framework in Frameworks */,
+				C0FF592519D6338300117FDA /* CFNetwork.framework in Frameworks */,
+				C0FF592319D6337C00117FDA /* libc++.dylib in Frameworks */,
+				C0FF592119D6336A00117FDA /* libicucore.dylib in Frameworks */,
+				C0FF591F19D6334300117FDA /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +100,7 @@
 			children = (
 				C0FF58F619D6307600117FDA /* AppDelegate.swift */,
 				C0FF58F819D6307600117FDA /* ViewController.swift */,
+				C0FF591C19D6328200117FDA /* Constants.swift */,
 				C0FF58FA19D6307600117FDA /* Main.storyboard */,
 				C0FF58FD19D6307600117FDA /* Images.xcassets */,
 				C0FF58FF19D6307600117FDA /* LaunchScreen.xib */,
@@ -90,6 +112,8 @@
 		C0FF58F419D6307600117FDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C0FF592B19D6340900117FDA /* Fyrefly-Bridging-Header.h */,
+				C0FF592619D6338B00117FDA /* Frameworks */,
 				C0FF58F519D6307600117FDA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -110,6 +134,19 @@
 				C0FF590B19D6307600117FDA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0FF592619D6338B00117FDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF591E19D6334300117FDA /* Firebase.framework */,
+				C0FF592919D633A400117FDA /* SystemConfiguration.framework */,
+				C0FF592719D6339800117FDA /* Security.framework */,
+				C0FF592419D6338300117FDA /* CFNetwork.framework */,
+				C0FF592219D6337C00117FDA /* libc++.dylib */,
+				C0FF592019D6336A00117FDA /* libicucore.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +251,7 @@
 			files = (
 				C0FF58F919D6307600117FDA /* ViewController.swift in Sources */,
 				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
+				C0FF591D19D6328200117FDA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +374,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Fyrefly",
+				);
 				INFOPLIST_FILE = Fyrefly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fyrefly-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -346,9 +392,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Fyrefly",
+				);
 				INFOPLIST_FILE = Fyrefly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fyrefly-Bridging-Header.h";
 			};
 			name = Release;
 		};
