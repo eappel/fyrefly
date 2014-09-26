@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F619D6307600117FDA /* AppDelegate.swift */; };
+		C0FF58F919D6307600117FDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F819D6307600117FDA /* ViewController.swift */; };
+		C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FA19D6307600117FDA /* Main.storyboard */; };
+		C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FD19D6307600117FDA /* Images.xcassets */; };
+		C0FF590119D6307600117FDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FF19D6307600117FDA /* LaunchScreen.xib */; };
+		C0FF590D19D6307600117FDA /* FyreflyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF590C19D6307600117FDA /* FyreflyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0FF590719D6307600117FDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0FF58E919D6307600117FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0FF58F019D6307600117FDA;
+			remoteInfo = Fyrefly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C0FF58F119D6307600117FDA /* Fyrefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyrefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0FF58F519D6307600117FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0FF58F619D6307600117FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0FF58F819D6307600117FDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C0FF58FB19D6307600117FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0FF58FD19D6307600117FDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C0FF590019D6307600117FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C0FF590619D6307600117FDA /* FyreflyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FyreflyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0FF590B19D6307600117FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0FF590C19D6307600117FDA /* FyreflyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyreflyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0FF58EE19D6307600117FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0FF590319D6307600117FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0FF58E819D6307600117FDA = {
+			isa = PBXGroup;
+			children = (
+				C0FF58F319D6307600117FDA /* Fyrefly */,
+				C0FF590919D6307600117FDA /* FyreflyTests */,
+				C0FF58F219D6307600117FDA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0FF58F219D6307600117FDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF58F119D6307600117FDA /* Fyrefly.app */,
+				C0FF590619D6307600117FDA /* FyreflyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0FF58F319D6307600117FDA /* Fyrefly */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF58F619D6307600117FDA /* AppDelegate.swift */,
+				C0FF58F819D6307600117FDA /* ViewController.swift */,
+				C0FF58FA19D6307600117FDA /* Main.storyboard */,
+				C0FF58FD19D6307600117FDA /* Images.xcassets */,
+				C0FF58FF19D6307600117FDA /* LaunchScreen.xib */,
+				C0FF58F419D6307600117FDA /* Supporting Files */,
+			);
+			path = Fyrefly;
+			sourceTree = "<group>";
+		};
+		C0FF58F419D6307600117FDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF58F519D6307600117FDA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0FF590919D6307600117FDA /* FyreflyTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF590C19D6307600117FDA /* FyreflyTests.swift */,
+				C0FF590A19D6307600117FDA /* Supporting Files */,
+			);
+			path = FyreflyTests;
+			sourceTree = "<group>";
+		};
+		C0FF590A19D6307600117FDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF590B19D6307600117FDA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0FF58F019D6307600117FDA /* Fyrefly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0FF591019D6307600117FDA /* Build configuration list for PBXNativeTarget "Fyrefly" */;
+			buildPhases = (
+				C0FF58ED19D6307600117FDA /* Sources */,
+				C0FF58EE19D6307600117FDA /* Frameworks */,
+				C0FF58EF19D6307600117FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fyrefly;
+			productName = Fyrefly;
+			productReference = C0FF58F119D6307600117FDA /* Fyrefly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0FF590519D6307600117FDA /* FyreflyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0FF591319D6307600117FDA /* Build configuration list for PBXNativeTarget "FyreflyTests" */;
+			buildPhases = (
+				C0FF590219D6307600117FDA /* Sources */,
+				C0FF590319D6307600117FDA /* Frameworks */,
+				C0FF590419D6307600117FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0FF590819D6307600117FDA /* PBXTargetDependency */,
+			);
+			name = FyreflyTests;
+			productName = FyreflyTests;
+			productReference = C0FF590619D6307600117FDA /* FyreflyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0FF58E919D6307600117FDA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Eric Appel";
+				TargetAttributes = {
+					C0FF58F019D6307600117FDA = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					C0FF590519D6307600117FDA = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = C0FF58F019D6307600117FDA;
+					};
+				};
+			};
+			buildConfigurationList = C0FF58EC19D6307600117FDA /* Build configuration list for PBXProject "Fyrefly" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0FF58E819D6307600117FDA;
+			productRefGroup = C0FF58F219D6307600117FDA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0FF58F019D6307600117FDA /* Fyrefly */,
+				C0FF590519D6307600117FDA /* FyreflyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0FF58EF19D6307600117FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */,
+				C0FF590119D6307600117FDA /* LaunchScreen.xib in Resources */,
+				C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0FF590419D6307600117FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0FF58ED19D6307600117FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0FF58F919D6307600117FDA /* ViewController.swift in Sources */,
+				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0FF590219D6307600117FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0FF590D19D6307600117FDA /* FyreflyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0FF590819D6307600117FDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0FF58F019D6307600117FDA /* Fyrefly */;
+			targetProxy = C0FF590719D6307600117FDA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C0FF58FA19D6307600117FDA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0FF58FB19D6307600117FDA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0FF58FF19D6307600117FDA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0FF590019D6307600117FDA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0FF590E19D6307600117FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C0FF590F19D6307600117FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0FF591119D6307600117FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fyrefly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C0FF591219D6307600117FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fyrefly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C0FF591419D6307600117FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FyreflyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fyrefly.app/Fyrefly";
+			};
+			name = Debug;
+		};
+		C0FF591519D6307600117FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FyreflyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fyrefly.app/Fyrefly";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0FF58EC19D6307600117FDA /* Build configuration list for PBXProject "Fyrefly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0FF590E19D6307600117FDA /* Debug */,
+				C0FF590F19D6307600117FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0FF591019D6307600117FDA /* Build configuration list for PBXNativeTarget "Fyrefly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0FF591119D6307600117FDA /* Debug */,
+				C0FF591219D6307600117FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C0FF591319D6307600117FDA /* Build configuration list for PBXNativeTarget "FyreflyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0FF591419D6307600117FDA /* Debug */,
+				C0FF591519D6307600117FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0FF58E919D6307600117FDA /* Project object */;
+}
