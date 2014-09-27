@@ -44,6 +44,7 @@ class TableViewController: UITableViewController {
             var children = snapshot.children
             while let child = children.nextObject() as? FDataSnapshot {
                 if let childName = child.value["name"] as? String {
+                    println(childName)
                     if childName != kCurrentUserID {
                         var isLoggedIn: NSNumber = NSNumber(bool: true)
                         if isLoggedIn == child.value["isLoggedIn"] as? NSNumber {

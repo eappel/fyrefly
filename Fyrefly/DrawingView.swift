@@ -9,13 +9,23 @@
 import UIKit
 
 class DrawingView: UIView {
-    
-    var path: UIBezierPath = UIBezierPath()
+    var selfPoints: [CGPoint] = []
+    var remotePoints: [CGPoint] = []
     
     override func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSaveGState(context)
+        if selfPoints.count > 0 {
+            selfPoints.append(selfPoints.last!)
+        }
+        CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
+        CGContextFillRect(context, self.bounds)
         UIColor.blackColor().setStroke()
-        path.lineWidth = 3.0
-        path.stroke()
+        CGContextStrokeLineSegments(context, selfPoints, UInt(selfPoints.count))
+        if selfPoints.count > 0 {
+            selfPoints.removeLast()
+        }
+        CGContextRestoreGState(context)
     }
     
 }

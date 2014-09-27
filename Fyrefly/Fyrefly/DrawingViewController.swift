@@ -15,6 +15,7 @@ class DrawingViewController: UIViewController {
     
     var drawView = DrawingView(frame: UIScreen.mainScreen().bounds)
     
+    var timer: NSTimer!
     
     init(user: User) {
         friendName = user.name
@@ -37,14 +38,36 @@ class DrawingViewController: UIViewController {
         
         view.backgroundColor = UIColor.whiteColor()
         
-        friendRef.observeEventType(.Value, withBlock: {
+        selfRef.observeEventType(.Value, withBlock: {
             snapshot in
             println("observing")
             println(snapshot.value)
+            self.handleRemoteCoordinate(snapshot.value as [String : Float])
         })
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "handleTimer", userInfo: nil, repeats: true)
+    }
+    
+    func handleTimer() {
+        if drawView.selfPoints.count > 2 {
+            drawView.selfPoints.removeRange(0...1)
+            drawView.setNeedsDisplay()
+        }
     }
     
     
+    func handleRemoteCoordinate(coordinate: [String : Float]) {
+        drawRemotePoint(
+            CGPoint(
+            x: CGFloat(coordinate["x"]!),
+            y: CGFloat(coordinate["y"]!)
+            )
+        )
+    }
+    
+    func drawRemotePoint(touchPoint: CGPoint) {
+        
+    }
     
     
     func coordinateConstructor(touchPoint: CGPoint) -> [String : Float] {
@@ -55,22 +78,30 @@ class DrawingViewController: UIViewController {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        var touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
+        let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
         selfRef.setValue(coordinateConstructor(touchPoint))
-        drawView.path.moveToPoint(touchPoint)
+        drawView.selfPoints.append(touchPoint)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        var touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
+        let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
         selfRef.setValue(coordinateConstructor(touchPoint))
-        drawView.path.addLineToPoint(touchPoint)
+        drawView.selfPoints.append(touchPoint)
+        drawView.selfPoints.append(touchPoint)
         drawView.setNeedsDisplay()
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        var touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
+        let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
         selfRef.setValue(coordinateConstructor(touchPoint))
+//        drawView.selfPoints.append(touchPoint)
+//        drawView.setNeedsDisplay()
+        timer.fire()
         
+        kCurrentUserRef.childByAppendingPath("touchesEnded").setValue(NSNumber(bool: true), withCompletionBlock: {
+            (error, fbase) -> Void in
+            fbase.childByAppendingPath("touchesEnded").setValue(NSNumber(bool: false))
+        })
     }
     
     override func viewDidDisappear(animated: Bool) {
