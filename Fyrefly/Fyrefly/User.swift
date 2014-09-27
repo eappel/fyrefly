@@ -12,8 +12,7 @@ struct User {
     var coordinate: (x: Float, y: Float) = (-1, -1)
     
     init(json: [String : NSNumber]) {
-        coordinate.x = json["x"]!
-        coordinate.y = json["y"]!
-        println("\(coordinate)")
+        coordinate.x = json["x"]!.floatValue
+        coordinate.y = json["y"]!.floatValue
     }
 }

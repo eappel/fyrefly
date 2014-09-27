@@ -41,26 +41,23 @@ class TableViewController: UITableViewController {
         
         userRef.observeSingleEventOfType(.Value, withBlock: {
             snapshot in
-            
-            for child: FDataSnapshot in snapshot.children {
-                if let childName: String = child["name"] {
+            var children = snapshot.children
+            while let child = children.nextObject() as? FDataSnapshot {
+                if let childName = child.value["name"] as? String {
                     println("\(childName)")
+                    var newUser: User = User(json: child.value["coordinate"] as [String : NSNumber])
+                    self.usersArray.append(newUser)
+//                    println("\(newUser.coordinate)")
                 }
             }
-            
-//            if let userCount: Int = snapshot.value.allKeys?.count {
-//                for i in 0..<userCount {
-//                    var key: String = snapshot.value.allKeys[i] as String
-//                    var userJson: [String : Dictionary] = snapshot.value[key as String]
-//                    var userStruct = User(json: userJson["coordinate"]!)
-//                    println("mapped!")
-//                    println("iteration \(i) \nkey: \(key)\nvalue: \(snapshot.value[key])")
-//                }
-//            }
-
-            println("snapshot value: \n\(snapshot.value)")
+        
+//            println("snapshot value: \n\(snapshot.value)")
         })
 
+        userRef.observeEventType(.ChildChanged, withBlock: {
+            snapshot in
+            println(snapshot.value)
+        })
     }
 
 
@@ -71,7 +68,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.usersArray.count
     }
 
 
