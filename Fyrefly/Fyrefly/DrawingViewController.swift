@@ -81,6 +81,7 @@ class DrawingViewController: UIViewController {
         let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
         selfRef.setValue(coordinateConstructor(touchPoint))
         drawView.selfPoints.append(touchPoint)
+        println("\(drawView.selfPoints)")
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
@@ -94,7 +95,7 @@ class DrawingViewController: UIViewController {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
         selfRef.setValue(coordinateConstructor(touchPoint))
-//        drawView.selfPoints.append(touchPoint)
+        drawView.selfPoints.append(touchPoint)
 //        drawView.setNeedsDisplay()
         timer.fire()
         

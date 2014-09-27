@@ -13,7 +13,7 @@ let kFirebaseDataPath: String = kFirebaseURL + "/app"
 let kFirebaseUsersPath: String = kFirebaseDataPath + "/users/"
 let kFirebaseCurrentUserPath: String = kFirebaseUsersPath + kCurrentUserID
 
-let kCurrentUserID: String = "eric"
-//let kCurrentUserID: String = "peter"
+//let kCurrentUserID: String = "eric"
+let kCurrentUserID: String = "peter"
 
 let kCurrentUserRef = Firebase(url: kFirebaseCurrentUserPath)

@@ -10,67 +10,62 @@ import UIKit
 
 class TableViewController: UITableViewController {
     var usersArray: [User] =  [User]()
+    var userLoginRefs: [Firebase] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         println("FYREFLY")
         
-        //  Create reference to Firebase location
+        let usersRef = Firebase(url: kFirebaseUsersPath)
         
-        var coordinateDictionary: [String : NSNumber] = [
-            "x" : NSNumber(float: 100.1),
-            "y" : NSNumber(float: 205.5)
-        ]
-        
-        
-        
-        //  Read data and react to changes
-//        currentUserRef.observeEventType(.Value, withBlock: {
-//            snapshot in
-//            println("\(snapshot.name) -> \(snapshot.value)")
-//        })
-        
-        let userRef = Firebase(url: kFirebaseUsersPath)
-        
-        userRef.observeSingleEventOfType(.Value, withBlock: {
+        usersRef.observeSingleEventOfType(.Value, withBlock: {
             snapshot in
             var children = snapshot.children
-            while let child = children.nextObject() as? FDataSnapshot {
-                if let childName = child.value["name"] as? String {
-                    println(childName)
-                    if childName != kCurrentUserID {
-                        var isLoggedIn: NSNumber = NSNumber(bool: true)
-                        if isLoggedIn == child.value["isLoggedIn"] as? NSNumber {
-                            var newUser: User = User(name: childName, json: child.value["coordinate"] as [String : NSNumber])
-                            self.usersArray.append(newUser)
-                            self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
-                        }
-                    }
-                }
-            }
-        
-//            println("snapshot value: \n\(snapshot.value)")
-        })
-
-        userRef.observeEventType(.ChildChanged, withBlock: {
-            snapshot in
-            if snapshot.value["isLoggedIn"] as NSNumber == NSNumber(bool: true) {
-                if let childName = snapshot.value["name"] as? String {
-                    if childName != kCurrentUserID {
-                        var newUser: User = User(name: childName, json: snapshot.value["coordinate"] as [String : NSNumber])
+            while let child: FDataSnapshot = children.nextObject() as? FDataSnapshot {
+                let childName = child.name
+                var childCoordinate: [String : NSNumber] = child.value["coordinate"] as [String : NSNumber]
+                var childLoginStatus: NSNumber = child.value["isLoggedIn"] as NSNumber
+                
+                if childName != kCurrentUserID {
+                    if NSNumber(bool: true) == childLoginStatus {
+                        var newUser: User = User(name: childName, json: childCoordinate)
                         self.usersArray.append(newUser)
                         self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
                     }
+                    // create reference to isLoggedIn parameter for this user
+                    var loginSnapshot: FDataSnapshot = child.childSnapshotForPath("isLoggedIn")
+                    var childLoginRef = loginSnapshot.ref
+                    self.userLoginRefs.append(childLoginRef)
+                }
+            }
+            println(self.userLoginRefs)
+        })
+        
+        for loginRef: Firebase in userLoginRefs {
+            loginRef.observeEventType(.Value, withBlock: {
+                snapshot in
+                println(loginRef.parent.name)
+                println(loginRef.name)
+                println("here? \(snapshot.value)")
+//                if snapshot.value as NSNumber == NSNumber(bool: true) {
+//                    var newUser: User = User(name: childName, json: snapshot.value["coordinate"] as [String : NSNumber])
+//                    self.usersArray.append(newUser)
+//                    self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
+//                }
+            })
+        }
+
+        usersRef.observeEventType(.ChildChanged, withBlock: {
+            snapshot in
+            if snapshot.value["isLoggedIn"] as NSNumber == NSNumber(bool: true) {
+                if let childName = snapshot.name {
+                    if childName != kCurrentUserID {
+                        
+                    }
                 }
             } else if snapshot.value["isLoggedIn"] as NSNumber == NSNumber(bool: false) {
-                if let childName = snapshot.value["name"] as? String {
+                if let childName = snapshot.name {
                     if childName != kCurrentUserID {
                         for i in 0..<self.usersArray.count {
                             if self.usersArray[i].name == childName {

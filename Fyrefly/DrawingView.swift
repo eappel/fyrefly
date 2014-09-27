@@ -27,5 +27,4 @@ class DrawingView: UIView {
         }
         CGContextRestoreGState(context)
     }
-    
 }
