@@ -9,6 +9,7 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    var usersArray: [User] =  [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,24 @@ class TableViewController: UITableViewController {
         
         userRef.observeSingleEventOfType(.Value, withBlock: {
             snapshot in
-            println("\(snapshot.value)")
+            
+            for child: FDataSnapshot in snapshot.children {
+                if let childName: String = child["name"] {
+                    println("\(childName)")
+                }
+            }
+            
+//            if let userCount: Int = snapshot.value.allKeys?.count {
+//                for i in 0..<userCount {
+//                    var key: String = snapshot.value.allKeys[i] as String
+//                    var userJson: [String : Dictionary] = snapshot.value[key as String]
+//                    var userStruct = User(json: userJson["coordinate"]!)
+//                    println("mapped!")
+//                    println("iteration \(i) \nkey: \(key)\nvalue: \(snapshot.value[key])")
+//                }
+//            }
+
+            println("snapshot value: \n\(snapshot.value)")
         })
 
     }

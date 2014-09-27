@@ -20,6 +20,7 @@
 		C0FF592819D6339800117FDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592719D6339800117FDA /* Security.framework */; };
 		C0FF592A19D633A400117FDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592919D633A400117FDA /* SystemConfiguration.framework */; };
 		C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF592E19D64AF000117FDA /* TableViewController.swift */; };
+		C0FF593119D653B900117FDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF593019D653B900117FDA /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C0FF592919D633A400117FDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C0FF592B19D6340900117FDA /* Fyrefly-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fyrefly-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		C0FF592E19D64AF000117FDA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		C0FF593019D653B900117FDA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +100,9 @@
 		C0FF58F319D6307600117FDA /* Fyrefly */ = {
 			isa = PBXGroup;
 			children = (
-				C0FF58F619D6307600117FDA /* AppDelegate.swift */,
-				C0FF592E19D64AF000117FDA /* TableViewController.swift */,
-				C0FF591C19D6328200117FDA /* Constants.swift */,
-				C0FF58FA19D6307600117FDA /* Main.storyboard */,
+				C0FF593219D653C400117FDA /* Model */,
+				C0FF593419D6540F00117FDA /* Controller */,
+				C0FF593319D653F400117FDA /* Other Sources */,
 				C0FF58FD19D6307600117FDA /* Images.xcassets */,
 				C0FF58FF19D6307600117FDA /* LaunchScreen.xib */,
 				C0FF58F419D6307600117FDA /* Supporting Files */,
@@ -147,6 +148,32 @@
 				C0FF592019D6336A00117FDA /* libicucore.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0FF593219D653C400117FDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF593019D653B900117FDA /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C0FF593319D653F400117FDA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF58F619D6307600117FDA /* AppDelegate.swift */,
+				C0FF591C19D6328200117FDA /* Constants.swift */,
+				C0FF58FA19D6307600117FDA /* Main.storyboard */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		C0FF593419D6540F00117FDA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF592E19D64AF000117FDA /* TableViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FF593119D653B900117FDA /* User.swift in Sources */,
 				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
 				C0FF591D19D6328200117FDA /* Constants.swift in Sources */,
 				C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */,
