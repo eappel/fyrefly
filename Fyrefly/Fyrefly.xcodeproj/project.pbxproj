@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F619D6307600117FDA /* AppDelegate.swift */; };
-		C0FF58F919D6307600117FDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F819D6307600117FDA /* ViewController.swift */; };
 		C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FA19D6307600117FDA /* Main.storyboard */; };
 		C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FD19D6307600117FDA /* Images.xcassets */; };
 		C0FF590119D6307600117FDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FF19D6307600117FDA /* LaunchScreen.xib */; };
@@ -20,6 +19,7 @@
 		C0FF592519D6338300117FDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592419D6338300117FDA /* CFNetwork.framework */; };
 		C0FF592819D6339800117FDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592719D6339800117FDA /* Security.framework */; };
 		C0FF592A19D633A400117FDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF592919D633A400117FDA /* SystemConfiguration.framework */; };
+		C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF592E19D64AF000117FDA /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 		C0FF58F119D6307600117FDA /* Fyrefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyrefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF58F519D6307600117FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0FF58F619D6307600117FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0FF58F819D6307600117FDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0FF58FB19D6307600117FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0FF58FD19D6307600117FDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C0FF590019D6307600117FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		C0FF592719D6339800117FDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C0FF592919D633A400117FDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C0FF592B19D6340900117FDA /* Fyrefly-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fyrefly-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		C0FF592E19D64AF000117FDA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF58F619D6307600117FDA /* AppDelegate.swift */,
-				C0FF58F819D6307600117FDA /* ViewController.swift */,
+				C0FF592E19D64AF000117FDA /* TableViewController.swift */,
 				C0FF591C19D6328200117FDA /* Constants.swift */,
 				C0FF58FA19D6307600117FDA /* Main.storyboard */,
 				C0FF58FD19D6307600117FDA /* Images.xcassets */,
@@ -249,9 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0FF58F919D6307600117FDA /* ViewController.swift in Sources */,
 				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
 				C0FF591D19D6328200117FDA /* Constants.swift in Sources */,
+				C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,4 +8,12 @@
 
 import Foundation
 
-let kFirebaseURL = "https://fyrefly.firebaseio.com"
+let kFirebaseURL: String = "https://fyrefly.firebaseio.com"
+let kFirebaseDataPath: String = kFirebaseURL + "/app"
+let kFirebaseUsersPath: String = kFirebaseDataPath + "/users/"
+let kFirebaseCurrentUserPath: String = kFirebaseUsersPath + kCurrentUserID
+
+//let kCurrentUserID: String = "eric"
+let kCurrentUserID: String = "peter"
+
+let kCurrentUserRef = Firebase(url: kFirebaseCurrentUserPath)
