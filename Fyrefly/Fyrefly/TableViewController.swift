@@ -44,10 +44,14 @@ class TableViewController: UITableViewController {
             var children = snapshot.children
             while let child = children.nextObject() as? FDataSnapshot {
                 if let childName = child.value["name"] as? String {
-                    println("\(childName)")
-                    var newUser: User = User(json: child.value["coordinate"] as [String : NSNumber])
-                    self.usersArray.append(newUser)
-//                    println("\(newUser.coordinate)")
+                    if childName != kCurrentUserID {
+                        var isLoggedIn: NSNumber = NSNumber(bool: true)
+                        if isLoggedIn == child.value["isLoggedIn"] as? NSNumber {
+                            var newUser: User = User(name: childName, json: child.value["coordinate"] as [String : NSNumber])
+                            self.usersArray.append(newUser)
+                            self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
+                        }
+                    }
                 }
             }
         
@@ -56,7 +60,26 @@ class TableViewController: UITableViewController {
 
         userRef.observeEventType(.ChildChanged, withBlock: {
             snapshot in
-            println(snapshot.value)
+            if snapshot.value["isLoggedIn"] as NSNumber == NSNumber(bool: true) {
+                if let childName = snapshot.value["name"] as? String {
+                    if childName != kCurrentUserID {
+                        var newUser: User = User(name: childName, json: snapshot.value["coordinate"] as [String : NSNumber])
+                        self.usersArray.append(newUser)
+                        self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
+                    }
+                }
+            } else if snapshot.value["isLoggedIn"] as NSNumber == NSNumber(bool: false) {
+                if let childName = snapshot.value["name"] as? String {
+                    if childName != kCurrentUserID {
+                        for i in 0..<self.usersArray.count {
+                            if self.usersArray[i].name == childName {
+                                self.usersArray.removeAtIndex(i)
+                                self.tableView(self.tableView, commitEditingStyle: .Delete, forRowAtIndexPath: NSIndexPath(forRow: i, inSection: 0))
+                            }
+                        }
+                    }
+                }
+            }
         })
     }
 
@@ -68,7 +91,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.usersArray.count
+        return usersArray.count
     }
 
 
@@ -76,31 +99,37 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
+        cell.textLabel?.text = usersArray[indexPath.row].name
         
 
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var drawingViewController = DrawingViewController(user: usersArray[indexPath.row])
+        self.navigationController!.pushViewController(drawingViewController, animated: true)
+    }
 
-    /*
+
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    */
 
-    /*
+
+    
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            var indexPaths: [NSIndexPath] = [indexPath]
+            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

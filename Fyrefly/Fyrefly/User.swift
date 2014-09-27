@@ -9,9 +9,11 @@
 import Foundation
 
 struct User {
+    var name: String
     var coordinate: (x: Float, y: Float) = (-1, -1)
     
-    init(json: [String : NSNumber]) {
+    init(name: String, json: [String : NSNumber]) {
+        self.name = name
         coordinate.x = json["x"]!.floatValue
         coordinate.y = json["y"]!.floatValue
     }

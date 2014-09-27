@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C06DAABF19D677DA008778C2 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DAABE19D677DA008778C2 /* DrawingViewController.swift */; };
+		C06DAAC219D6821C008778C2 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DAAC119D6821C008778C2 /* DrawingView.swift */; };
 		C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F619D6307600117FDA /* AppDelegate.swift */; };
 		C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FA19D6307600117FDA /* Main.storyboard */; };
 		C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FD19D6307600117FDA /* Images.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C06DAABE19D677DA008778C2 /* DrawingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		C06DAAC119D6821C008778C2 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawingView.swift; path = ../DrawingView.swift; sourceTree = "<group>"; };
 		C0FF58F119D6307600117FDA /* Fyrefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyrefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF58F519D6307600117FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0FF58F619D6307600117FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C06DAAC019D6820A008778C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C06DAAC119D6821C008778C2 /* DrawingView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		C0FF58E819D6307600117FDA = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF593219D653C400117FDA /* Model */,
+				C06DAAC019D6820A008778C2 /* View */,
 				C0FF593419D6540F00117FDA /* Controller */,
 				C0FF593319D653F400117FDA /* Other Sources */,
 				C0FF58FD19D6307600117FDA /* Images.xcassets */,
@@ -172,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF592E19D64AF000117FDA /* TableViewController.swift */,
+				C06DAABE19D677DA008778C2 /* DrawingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -279,7 +293,9 @@
 				C0FF593119D653B900117FDA /* User.swift in Sources */,
 				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
 				C0FF591D19D6328200117FDA /* Constants.swift in Sources */,
+				C06DAAC219D6821C008778C2 /* DrawingView.swift in Sources */,
 				C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */,
+				C06DAABF19D677DA008778C2 /* DrawingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +502,7 @@
 				C0FF591219D6307600117FDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0FF591319D6307600117FDA /* Build configuration list for PBXNativeTarget "FyreflyTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +511,7 @@
 				C0FF591519D6307600117FDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
