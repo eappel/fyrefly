@@ -8,12 +8,13 @@
 
 import UIKit
 
-class DrawingViewController: UIViewController {
+class DrawingViewController: UIViewController, BackButtonDelegate, LoginStatusDelegate {
     let remoteRef: Firebase = Firebase()
     let selfRef: Firebase = Firebase()
     var touchesBegan: Bool = false
     var touchesEnded: Bool = false
     var setup: Bool = true
+    var remoteChattingWith: String = ""
     
     var drawView = DrawingView(frame: UIScreen.mainScreen().bounds)
     
@@ -28,6 +29,8 @@ class DrawingViewController: UIViewController {
     
     var selfMetaTimerActive: Bool = false
     var remoteMetaTimerActive: Bool = false
+    
+    var header: DrawingHeaderView = DrawingHeaderView()
 
     
     init(user: User) {
@@ -49,14 +52,51 @@ class DrawingViewController: UIViewController {
         view = drawView
     }
     
+    func backbuttonPressed() {
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func userDidComeOnline(name: String) {
+        if name == remoteRef.parent.name && remoteChattingWith == kCurrentUserID {
+            UIView.animateWithDuration(0.5, animations: {
+                self.header.viewIndicator.backgroundColor = UIColor.indicatorOn()
+            })
+        }
+    }
+    func userDidGoOffline(name: String) {
+        if name == remoteRef.parent.name {
+            UIView.animateWithDuration(0.5, animations: {
+                self.header.viewIndicator.backgroundColor = UIColor.indicatorOff()
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.blackColor()
+        
+        header = DrawingHeaderView.headerView()
+        header.setText(remoteRef.parent.name.uppercaseString)
+        header.backgroundColor = UIColor.clearColor()
+        header.delegate = self
+        view.addSubview(header)
         
         remoteRef.observeEventType(.Value, withBlock: {
             snapshot in
             self.handleRemoteCoordinate(snapshot.value as [String : Float])
+        })
+        
+        remoteRef.parent.childByAppendingPath("chattingWith").observeEventType(.Value, withBlock: {
+            snapshot in
+            let remoteFocus = snapshot.value as String
+            self.remoteChattingWith = remoteFocus
+            if remoteFocus == self.selfRef.parent.name {
+                self.userDidComeOnline(self.remoteRef.parent.name)
+            } else {
+                self.userDidGoOffline(self.remoteRef.parent.name)
+            }
+            
         })
         
         
@@ -70,7 +110,6 @@ class DrawingViewController: UIViewController {
     }
     
     func handleTimer(sender: NSTimer) {
-        println("regtimer")
         if sender == selfTimer && removingSelfPoints {
             if drawView.selfPoints.count >= 2 {
                 drawView.selfPoints.removeLastLineSegment()
@@ -198,7 +237,9 @@ class DrawingViewController: UIViewController {
     }
     
     override func viewDidDisappear(animated: Bool) {
+        kCurrentUserRef.childByAppendingPath("chattingWith").setValue("")
         remoteRef.removeAllObservers()
+        remoteRef.parent.childByAppendingPath("chattingWith").removeAllObservers()
     }
     
     

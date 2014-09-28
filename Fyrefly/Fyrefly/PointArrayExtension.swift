@@ -14,25 +14,11 @@ extension Array {
     }
     
     mutating func addMoveToPoint(point: CGPoint) {
-//        if self.count % 2 == 1 {
-//            self.append(point as T)
-//        } else {
-//            if let last = self.last {
-//                self.append(last)
-//                self.append(point as T)
-//            }
-//        }
         self.append(point as T)
         self.append(point as T)
     }
     
     mutating func addEndPoint(point: CGPoint) {
-//        if self.count % 2 == 1 {
-//            self.append(point as T)
-//        } else {
-//            self.append(point as T)
-//            self.append(point as T)
-//        }
         self.append(point as T)
     }
     

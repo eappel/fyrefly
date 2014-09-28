@@ -8,17 +8,32 @@
 
 import UIKit
 
+protocol LoginStatusDelegate {
+    func userDidGoOffline(name: String)
+    func userDidComeOnline(name: String)
+}
+
 class TableViewController: UITableViewController {
     var usersArray: [User] =  [User]()
     
+    @IBOutlet var tableViewHeader: UIView!
+    @IBOutlet weak var onlineFriendsLabel: UILabel!
+    
+    var fyreSpace: LoginStatusDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationBarApperance()
-        
-        
         println("FYREFLY")
+        
+//        tableView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundTile"))
+        
+        tableView.alwaysBounceVertical = false
+        
+        NSBundle.mainBundle().loadNibNamed("TableViewHeader", owner: self, options: nil)
+        tableView.tableHeaderView = tableViewHeader
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         let usersRef = Firebase(url: kFirebaseUsersPath)
         
@@ -43,10 +58,14 @@ class TableViewController: UITableViewController {
                     snapshot in
                     let parentRef = loginRef.parent
                     if snapshot.value as NSNumber == NSNumber(bool: true) {
+                        println("login event")
                         self.addUserFromRef(parentRef)
+                        self.fyreSpace?.userDidComeOnline(parentRef.name)
                     } else if snapshot.value as NSNumber == NSNumber(bool: false) {
+                        println("login event")
                         for i in 0..<self.usersArray.count {
                             if self.usersArray[i].name == parentRef.name {
+                                self.fyreSpace?.userDidGoOffline(parentRef.name)
                                 self.usersArray.removeAtIndex(i)
                                 self.tableView(self.tableView, commitEditingStyle: .Delete, forRowAtIndexPath: NSIndexPath(forRow: i, inSection: 0))
                             }
@@ -56,26 +75,18 @@ class TableViewController: UITableViewController {
             }
         })
     }
-    
-    func setNavigationBarApperance(){
-        self.navigationController?.navigationBarHidden = false
-        self.navigationItem.title = "firefly"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "JennaSue", size: 28), NSForegroundColorAttributeName : UIColor(red: 195/255, green: 151/255, blue: 26/255, alpha: 1)]
-    }
 
     func addUserFromRef(ref: Firebase) {
         ref.observeSingleEventOfType(.Value, withBlock: {
             snapshot in
             let userName = ref.name
-            println("username" + userName)
             let userCoordinate: [String : NSNumber] = snapshot.value["coordinate"] as [String : NSNumber]
             var newUser = User(name: userName, json: userCoordinate)
-            println(newUser.name)
             self.usersArray.append(newUser)
             self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
         })
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -84,37 +95,50 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usersArray.count
+//        return 5
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        cell.textLabel?.text = usersArray[indexPath.row].name
-
+        
+        var separator: UIView = UIView(frame: CGRect(x: 0, y: cell.contentView.frame.height - 3, width: cell.contentView.frame.width, height: 3))
+        separator.backgroundColor = UIColor.fyreflyOrange()
+        cell.contentView.addSubview(separator)
+        
+        var titleLabel: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: cell.contentView.frame.width - 15, height: cell.contentView.frame.height - 7))
+        titleLabel.font = UIFont(name: "HelveticaNeue", size: 36.0)
+//        titleLabel.text = "Eric Appel"
+        titleLabel.text = usersArray[indexPath.row].name.uppercaseString
+        titleLabel.textColor = UIColor.fyreflyOrange()
+        cell.contentView.addSubview(titleLabel)
+        
         return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var drawingViewController = DrawingViewController(user: usersArray[indexPath.row])
+//        var drawingViewController = DrawingViewController(user: User(name: "peter", json: [
+//            "x" : 50,
+//            "y" : 50
+//            ]))
+        var selectedUser: User = usersArray[indexPath.row]
+        var drawingViewController = DrawingViewController(user: selectedUser)
+        kCurrentUserRef.childByAppendingPath("chattingWith").setValue(selectedUser.name)
+        fyreSpace = drawingViewController
         self.navigationController!.pushViewController(drawingViewController, animated: true)
     }
 
 
-    // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        return false
     }
-
-
     
-    // Override to support editing the table view.
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        onlineFriendsLabel.text? = "\(usersArray.count)"
         if editingStyle == .Delete {
-            // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             var indexPaths: [NSIndexPath] = [indexPath]
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
         }    

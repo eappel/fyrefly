@@ -16,19 +16,18 @@ class DrawingView: UIView {
         if selfPoints.isEmpty && remotePoints.isEmpty { return }
         let context = UIGraphicsGetCurrentContext()
         CGContextSaveGState(context)
-        CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
+        CGContextSetFillColorWithColor(context, UIColor.blackColor().CGColor)
         CGContextFillRect(context, self.bounds)
         CGContextSetLineWidth(context, 5)
         CGContextSetLineCap(context, kCGLineCapRound)
         CGContextSetLineJoin(context, kCGLineJoinBevel)
-        UIColor.blackColor().setStroke()
+        UIColor.drawingGray().setStroke()
         let scount = selfPoints.count == 0 ? UInt(selfPoints.count) : UInt(selfPoints.count-1)
         CGContextStrokeLineSegments(context, selfPoints, scount)
-        UIColor.redColor().setStroke()
+        UIColor.drawingBlue().setStroke()
         let rcount = remotePoints.count == 0 ? UInt(remotePoints.count) : UInt(remotePoints.count-1)
         CGContextStrokeLineSegments(context, remotePoints, rcount)
         CGContextRestoreGState(context)
-//        println("\(scount)" + " : " + "\(rcount)")
     }
     
 }
