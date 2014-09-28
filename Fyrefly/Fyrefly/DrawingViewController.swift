@@ -9,18 +9,34 @@
 import UIKit
 
 class DrawingViewController: UIViewController {
-    var friendName: String = ""
-    let friendRef: Firebase = Firebase()
+    let remoteRef: Firebase = Firebase()
     let selfRef: Firebase = Firebase()
+    var touchesBegan: Bool = false
+    var touchesEnded: Bool = false
+    var setup: Bool = true
     
     var drawView = DrawingView(frame: UIScreen.mainScreen().bounds)
     
-    var timer: NSTimer!
+    var selfTimer: NSTimer!
+    var remoteTimer: NSTimer!
+    
+    var selfMetaTimer: NSTimer!
+    var remoteMetaTimer: NSTimer!
+    
+    var removingSelfPoints: Bool = false
+    var removingRemotePoints: Bool = false
+    
+    var selfMetaTimerActive: Bool = false
+    var remoteMetaTimerActive: Bool = false
+
     
     init(user: User) {
-        friendName = user.name
-        friendRef = Firebase(url: kFirebaseUsersPath + friendName + "/coordinate")
+        remoteRef = Firebase(url: kFirebaseUsersPath + user.name + "/coordinate")
         selfRef = Firebase(url: kFirebaseCurrentUserPath + "/coordinate")
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,37 +54,105 @@ class DrawingViewController: UIViewController {
         
         view.backgroundColor = UIColor.whiteColor()
         
-        selfRef.observeEventType(.Value, withBlock: {
+        remoteRef.observeEventType(.Value, withBlock: {
             snapshot in
-            println("observing")
-            println(snapshot.value)
             self.handleRemoteCoordinate(snapshot.value as [String : Float])
         })
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "handleTimer", userInfo: nil, repeats: true)
+        
+        
+        selfTimer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "handleTimer:", userInfo: nil, repeats: true)
+        remoteTimer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "handleTimer:", userInfo: nil, repeats: true)
+        
+        selfMetaTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "handleMetaTimer:", userInfo: nil, repeats: true)
+        remoteMetaTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "handleMetaTimer:", userInfo: nil, repeats: true)
+
     }
     
-    func handleTimer() {
-        if drawView.selfPoints.count > 2 {
-            drawView.selfPoints.removeRange(0...1)
-            drawView.setNeedsDisplay()
+    func handleTimer(sender: NSTimer) {
+        println("regtimer")
+        if sender == selfTimer && removingSelfPoints {
+            if drawView.selfPoints.count >= 2 {
+                drawView.selfPoints.removeLastLineSegment()
+                drawView.setNeedsDisplay()
+            } else {
+                selfMetaTimerActive = false
+                removingSelfPoints = false
+            }
+            return
+        }
+        if sender == remoteTimer && removingRemotePoints {
+            if drawView.remotePoints.count >= 2 {
+                drawView.remotePoints.removeLastLineSegment()
+                drawView.setNeedsDisplay()
+            } else {
+                remoteMetaTimerActive = false
+                removingRemotePoints = false
+            }
+            return
+        }
+
+    }
+    
+    func handleMetaTimer(sender: NSTimer) {
+        if sender == selfMetaTimer {
+            if selfMetaTimerActive {
+                removingSelfPoints = true
+            } else {
+                removingSelfPoints = false
+            }
+        }
+        if sender == remoteMetaTimer {
+            if remoteMetaTimerActive {
+                removingRemotePoints = true
+            } else {
+                removingRemotePoints = false
+            }
         }
     }
     
-    
     func handleRemoteCoordinate(coordinate: [String : Float]) {
-        drawRemotePoint(
-            CGPoint(
-            x: CGFloat(coordinate["x"]!),
-            y: CGFloat(coordinate["y"]!)
-            )
-        )
-    }
-    
-    func drawRemotePoint(touchPoint: CGPoint) {
+        if setup {
+            setup = false
+            return
+        }
+        if coordinate["x"]! == -2.0 {
+            println("BEGAN")
+            drawView.setNeedsDisplay()
+            touchesBegan = true
+            return
+        }
+        if coordinate["x"] == -1.0 {
+            println("ENDED")
+            touchesEnded = true
+            return
+        }
+        
+        if touchesBegan {
+            println("BEGAN")
+            drawView.remotePoints.addStartingPoint(touchPointConstructor(coordinate))
+            remoteMetaTimerActive = false
+            removingRemotePoints = false
+            touchesBegan = false
+            return
+        }
+        if touchesEnded {
+            println("ENDED")
+            drawView.remotePoints.addEndPoint(touchPointConstructor(coordinate))
+            drawView.setNeedsDisplay()
+            remoteMetaTimerActive = true
+            touchesEnded = false
+            return
+        }
+        
+        drawView.remotePoints.addMoveToPoint(touchPointConstructor(coordinate))
+        drawView.setNeedsDisplay()
+        remoteMetaTimerActive = false
+        removingRemotePoints = false
+        
+        println("moved")
         
     }
-    
     
     func coordinateConstructor(touchPoint: CGPoint) -> [String : Float] {
         return [
@@ -77,36 +161,44 @@ class DrawingViewController: UIViewController {
         ]
     }
     
+    func touchPointConstructor(coordinate: [String : Float]) -> CGPoint {
+        return CGPoint(
+            x: CGFloat(coordinate["x"]!),
+            y: CGFloat(coordinate["y"]!)
+        )
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
+        selfRef.setValue(coordinateConstructor(CGPoint(x: -2.0, y: -2.0)))
         selfRef.setValue(coordinateConstructor(touchPoint))
-        drawView.selfPoints.append(touchPoint)
-        println("\(drawView.selfPoints)")
+        drawView.selfPoints.addStartingPoint(touchPoint)
+        selfMetaTimerActive = false
+        removingSelfPoints = false
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
         selfRef.setValue(coordinateConstructor(touchPoint))
-        drawView.selfPoints.append(touchPoint)
-        drawView.selfPoints.append(touchPoint)
+        drawView.selfPoints.addMoveToPoint(touchPoint)
         drawView.setNeedsDisplay()
+        selfMetaTimerActive = false
+        removingSelfPoints = false
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         let touchPoint: CGPoint = touches.anyObject()!.locationInView(view)
-        selfRef.setValue(coordinateConstructor(touchPoint))
-        drawView.selfPoints.append(touchPoint)
-//        drawView.setNeedsDisplay()
-        timer.fire()
+        drawView.selfPoints.addEndPoint(touchPoint)
+        drawView.setNeedsDisplay()
         
-        kCurrentUserRef.childByAppendingPath("touchesEnded").setValue(NSNumber(bool: true), withCompletionBlock: {
-            (error, fbase) -> Void in
-            fbase.childByAppendingPath("touchesEnded").setValue(NSNumber(bool: false))
-        })
+        selfRef.setValue(coordinateConstructor(CGPoint(x: -1.0, y: -1.0)))
+        selfRef.setValue(coordinateConstructor(touchPoint))
+        
+        selfMetaTimerActive = true
     }
     
     override func viewDidDisappear(animated: Bool) {
-        friendRef.removeAllObservers()
+        remoteRef.removeAllObservers()
     }
     
     

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C06DAABF19D677DA008778C2 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DAABE19D677DA008778C2 /* DrawingViewController.swift */; };
-		C06DAAC219D6821C008778C2 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DAAC119D6821C008778C2 /* DrawingView.swift */; };
-		C0E291A919D7306B005C35A6 /* ArrayPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291A819D7306B005C35A6 /* ArrayPointExtension.swift */; };
+		C0E291AB19D74C2A005C35A6 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291AA19D74C2A005C35A6 /* DrawingView.swift */; };
+		C0E291AD19D74C40005C35A6 /* PointArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291AC19D74C40005C35A6 /* PointArrayExtension.swift */; };
+		C0E291AF19D74C57005C35A6 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291AE19D74C57005C35A6 /* DrawingViewController.swift */; };
 		C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F619D6307600117FDA /* AppDelegate.swift */; };
 		C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FA19D6307600117FDA /* Main.storyboard */; };
 		C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF58FD19D6307600117FDA /* Images.xcassets */; };
@@ -37,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C06DAABE19D677DA008778C2 /* DrawingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
-		C06DAAC119D6821C008778C2 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawingView.swift; path = ../DrawingView.swift; sourceTree = "<group>"; };
-		C0E291A819D7306B005C35A6 /* ArrayPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayPointExtension.swift; sourceTree = "<group>"; };
+		C0E291AA19D74C2A005C35A6 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		C0E291AC19D74C40005C35A6 /* PointArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointArrayExtension.swift; sourceTree = "<group>"; };
+		C0E291AE19D74C57005C35A6 /* DrawingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		C0FF58F119D6307600117FDA /* Fyrefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyrefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF58F519D6307600117FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0FF58F619D6307600117FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		C06DAAC019D6820A008778C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C06DAAC119D6821C008778C2 /* DrawingView.swift */,
+				C0E291AA19D74C2A005C35A6 /* DrawingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF58F619D6307600117FDA /* AppDelegate.swift */,
-				C0E291A819D7306B005C35A6 /* ArrayPointExtension.swift */,
+				C0E291AC19D74C40005C35A6 /* PointArrayExtension.swift */,
 				C0FF591C19D6328200117FDA /* Constants.swift */,
 				C0FF58FA19D6307600117FDA /* Main.storyboard */,
 			);
@@ -188,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF592E19D64AF000117FDA /* TableViewController.swift */,
-				C06DAABE19D677DA008778C2 /* DrawingViewController.swift */,
+				C0E291AE19D74C57005C35A6 /* DrawingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -294,12 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FF593119D653B900117FDA /* User.swift in Sources */,
+				C0E291AF19D74C57005C35A6 /* DrawingViewController.swift in Sources */,
 				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
+				C0E291AD19D74C40005C35A6 /* PointArrayExtension.swift in Sources */,
 				C0FF591D19D6328200117FDA /* Constants.swift in Sources */,
-				C06DAAC219D6821C008778C2 /* DrawingView.swift in Sources */,
+				C0E291AB19D74C2A005C35A6 /* DrawingView.swift in Sources */,
 				C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */,
-				C0E291A919D7306B005C35A6 /* ArrayPointExtension.swift in Sources */,
-				C06DAABF19D677DA008778C2 /* DrawingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
