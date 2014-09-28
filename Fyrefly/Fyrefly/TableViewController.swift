@@ -20,14 +20,26 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var onlineFriendsLabel: UILabel!
     
     var fyreSpace: LoginStatusDelegate?
+    
+    func registerUser() {
+        let usersRef = Firebase(url: kFirebaseUsersPath)
+        usersRef.observeSingleEventOfType(.Value, withBlock: {
+            snapshot in
+            var usernames: [String] = []
+            var children = snapshot.children
+            while let child: FDataSnapshot = children.nextObject() as? FDataSnapshot {
+                usernames.append(child.name)
+            }
+            var loginViewController = LoginViewController(nibName: "LoginViewController", bundle: NSBundle.mainBundle())
+            loginViewController.takenUsernames = usernames
+            self.presentViewController(loginViewController, animated: true, completion: nil)
+        })
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("FYREFLY")
-        
-//        tableView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundTile"))
-        
         tableView.alwaysBounceVertical = false
         
         NSBundle.mainBundle().loadNibNamed("TableViewHeader", owner: self, options: nil)
@@ -35,6 +47,17 @@ class TableViewController: UITableViewController {
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
+        
+        if !(NSUserDefaults.standardUserDefaults().objectForKey("username") != nil) {
+            registerUser()
+        } else {
+            kCurrentUserID = NSUserDefaults.standardUserDefaults().objectForKey("username") as String
+            setupEnvironment()
+        }
+    }
+
+    func setupEnvironment() {
+
         let usersRef = Firebase(url: kFirebaseUsersPath)
         
         usersRef.observeSingleEventOfType(.Value, withBlock: {
@@ -43,7 +66,6 @@ class TableViewController: UITableViewController {
             var children = snapshot.children
             while let child: FDataSnapshot = children.nextObject() as? FDataSnapshot {
                 let childName = child.name
-                let childCoordinate: [String : NSNumber] = child.value["coordinate"] as [String : NSNumber]
                 let loginSnapshot: FDataSnapshot = child.childSnapshotForPath("isLoggedIn")
                 if childName != kCurrentUserID {
                     // create reference to isLoggedIn parameter for this user
@@ -86,6 +108,7 @@ class TableViewController: UITableViewController {
             self.tableView(self.tableView, commitEditingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: self.usersArray.count-1, inSection: 0))
         })
     }
+    
     
     // MARK: - Table view data source
 

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="JennaSue.ttf">
+            <string>JennaSue</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Fyrefly" customModuleProvider="target">
+            <connections>
+                <outlet property="usernameTextField" destination="ozd-0b-l0o" id="aN3-Y3-KKK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="warningLabel" destination="GoP-uN-nqH" id="Cgv-ey-zfm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fyrefly" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="64" translatesAutoresizingMaskIntoConstraints="NO" id="QXW-7u-mVG">
+                    <rect key="frame" x="0.0" y="24" width="600" height="135"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="LAH-1J-EFd"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="YXo-QG-fA9"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="eKz-W8-5RA"/>
+                        <constraint firstAttribute="height" constant="135" id="fqo-68-uEC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="JennaSue" family="Jenna Sue" pointSize="100"/>
+                    <color key="textColor" red="1" green="0.40000000000000002" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="YXo-QG-fA9"/>
+                            <exclude reference="eKz-W8-5RA"/>
+                            <exclude reference="LAH-1J-EFd"/>
+                        </mask>
+                    </variation>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="ozd-0b-l0o">
+                    <rect key="frame" x="50" y="199" width="500" height="70"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="KFN-tU-jqe"/>
+                        <constraint firstAttribute="height" constant="30" id="sbc-KL-Xdp"/>
+                    </constraints>
+                    <color key="textColor" red="0.24507229129999999" green="0.78252551020000005" blue="0.6361945296" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="sbc-KL-Xdp"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="usernameTextfieldEditingChanged:" destination="-1" eventType="editingChanged" id="4Ss-Lk-vHy"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoP-uN-nqH">
+                    <rect key="frame" x="124" y="289" width="353" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="353" id="0F9-02-eum"/>
+                        <constraint firstAttribute="height" constant="21" id="etW-a7-6Dr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.075800706819999994" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="QXW-7u-mVG" secondAttribute="trailing" id="H8P-ph-c3L"/>
+                <constraint firstItem="GoP-uN-nqH" firstAttribute="centerX" secondItem="ozd-0b-l0o" secondAttribute="centerX" id="L2c-lU-RwB"/>
+                <constraint firstItem="QXW-7u-mVG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NJa-i3-v4W"/>
+                <constraint firstItem="ozd-0b-l0o" firstAttribute="top" secondItem="QXW-7u-mVG" secondAttribute="bottom" constant="40" id="ViZ-Af-raU"/>
+                <constraint firstAttribute="trailing" secondItem="ozd-0b-l0o" secondAttribute="trailing" constant="50" id="aKo-zl-lDR"/>
+                <constraint firstItem="ozd-0b-l0o" firstAttribute="centerX" secondItem="QXW-7u-mVG" secondAttribute="centerX" id="kDC-nS-tlQ"/>
+                <constraint firstItem="ozd-0b-l0o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="lwz-Xg-8Hr"/>
+                <constraint firstItem="QXW-7u-mVG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="uv3-db-Uky"/>
+                <constraint firstItem="ozd-0b-l0o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="vZb-iS-85l"/>
+                <constraint firstItem="GoP-uN-nqH" firstAttribute="top" secondItem="ozd-0b-l0o" secondAttribute="bottom" constant="20" id="xpt-hq-6nn"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="lwz-Xg-8Hr"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

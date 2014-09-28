@@ -38,7 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        kCurrentUserRef.childByAppendingPath("isLoggedIn").setValue(NSNumber(bool: true))
+        if let username: String = NSUserDefaults.standardUserDefaults().objectForKey("username") as? String {
+            println("found username in defaults")
+            Firebase(url: kFirebaseUsersPath + "/" + username)
+            kCurrentUserRef.childByAppendingPath("isLoggedIn").setValue(NSNumber(bool: true))
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
