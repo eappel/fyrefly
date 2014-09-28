@@ -10,10 +10,14 @@ import UIKit
 
 class TableViewController: UITableViewController {
     var usersArray: [User] =  [User]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        setNavigationBarApperance()
+        
+        
         println("FYREFLY")
         
         let usersRef = Firebase(url: kFirebaseUsersPath)
@@ -51,6 +55,12 @@ class TableViewController: UITableViewController {
                 })
             }
         })
+    }
+    
+    func setNavigationBarApperance(){
+        self.navigationController?.navigationBarHidden = false
+        self.navigationItem.title = "firefly"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "JennaSue", size: 28), NSForegroundColorAttributeName : UIColor(red: 195/255, green: 151/255, blue: 26/255, alpha: 1)]
     }
 
     func addUserFromRef(ref: Firebase) {

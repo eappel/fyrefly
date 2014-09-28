@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65A193CB19D7B57C00632264 /* JennaSue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A193CA19D7B57C00632264 /* JennaSue.ttf */; };
+		65A193CC19D7B57C00632264 /* JennaSue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A193CA19D7B57C00632264 /* JennaSue.ttf */; };
 		C0E291AB19D74C2A005C35A6 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291AA19D74C2A005C35A6 /* DrawingView.swift */; };
 		C0E291AD19D74C40005C35A6 /* PointArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291AC19D74C40005C35A6 /* PointArrayExtension.swift */; };
 		C0E291AF19D74C57005C35A6 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E291AE19D74C57005C35A6 /* DrawingViewController.swift */; };
@@ -37,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65A193CA19D7B57C00632264 /* JennaSue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JennaSue.ttf; sourceTree = "<group>"; };
 		C0E291AA19D74C2A005C35A6 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		C0E291AC19D74C40005C35A6 /* PointArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointArrayExtension.swift; sourceTree = "<group>"; };
 		C0E291AE19D74C57005C35A6 /* DrawingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65749AA319D7AA8C006FFEF3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65A193CA19D7B57C00632264 /* JennaSue.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		C06DAAC019D6820A008778C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +139,7 @@
 		C0FF58F419D6307600117FDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65749AA319D7AA8C006FFEF3 /* Fonts */,
 				C0FF592B19D6340900117FDA /* Fyrefly-Bridging-Header.h */,
 				C0FF592619D6338B00117FDA /* Frameworks */,
 				C0FF58F519D6307600117FDA /* Info.plist */,
@@ -274,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */,
+				65A193CB19D7B57C00632264 /* JennaSue.ttf in Resources */,
 				C0FF590119D6307600117FDA /* LaunchScreen.xib in Resources */,
 				C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */,
 			);
@@ -283,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A193CC19D7B57C00632264 /* JennaSue.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
