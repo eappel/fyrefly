@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        kCurrentUserRef.childByAppendingPath("isLoggedIn").setValue(NSNumber(bool: true))
         println("didfinishlaunching")
-        
+    
         return true
     }
 

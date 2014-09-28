@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65FE4E2B19D691B800136D89 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE4E2A19D691B800136D89 /* LoginView.swift */; };
+		65FE4E2D19D691C000136D89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE4E2C19D691C000136D89 /* LoginViewController.swift */; };
+		65FE4E2F19D6926200136D89 /* JennaSue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65FE4E2E19D6926200136D89 /* JennaSue.ttf */; };
 		C06DAABF19D677DA008778C2 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DAABE19D677DA008778C2 /* DrawingViewController.swift */; };
 		C06DAAC219D6821C008778C2 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DAAC119D6821C008778C2 /* DrawingView.swift */; };
 		C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF58F619D6307600117FDA /* AppDelegate.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65FE4E2A19D691B800136D89 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		65FE4E2C19D691C000136D89 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		65FE4E2E19D6926200136D89 /* JennaSue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JennaSue.ttf; sourceTree = "<group>"; };
 		C06DAABE19D677DA008778C2 /* DrawingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		C06DAAC119D6821C008778C2 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawingView.swift; path = ../DrawingView.swift; sourceTree = "<group>"; };
 		C0FF58F119D6307600117FDA /* Fyrefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyrefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,10 +89,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65FE4E3019D6929500136D89 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65FE4E2E19D6926200136D89 /* JennaSue.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		C06DAAC019D6820A008778C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				C06DAAC119D6821C008778C2 /* DrawingView.swift */,
+				65FE4E2A19D691B800136D89 /* LoginView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -126,6 +141,7 @@
 		C0FF58F419D6307600117FDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65FE4E3019D6929500136D89 /* Fonts */,
 				C0FF592B19D6340900117FDA /* Fyrefly-Bridging-Header.h */,
 				C0FF592619D6338B00117FDA /* Frameworks */,
 				C0FF58F519D6307600117FDA /* Info.plist */,
@@ -186,6 +202,7 @@
 			children = (
 				C0FF592E19D64AF000117FDA /* TableViewController.swift */,
 				C06DAABE19D677DA008778C2 /* DrawingViewController.swift */,
+				65FE4E2C19D691C000136D89 /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -271,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FF58FC19D6307600117FDA /* Main.storyboard in Resources */,
+				65FE4E2F19D6926200136D89 /* JennaSue.ttf in Resources */,
 				C0FF590119D6307600117FDA /* LaunchScreen.xib in Resources */,
 				C0FF58FE19D6307600117FDA /* Images.xcassets in Resources */,
 			);
@@ -291,8 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FF593119D653B900117FDA /* User.swift in Sources */,
+				65FE4E2B19D691B800136D89 /* LoginView.swift in Sources */,
 				C0FF58F719D6307600117FDA /* AppDelegate.swift in Sources */,
 				C0FF591D19D6328200117FDA /* Constants.swift in Sources */,
+				65FE4E2D19D691C000136D89 /* LoginViewController.swift in Sources */,
 				C06DAAC219D6821C008778C2 /* DrawingView.swift in Sources */,
 				C0FF592F19D64AF000117FDA /* TableViewController.swift in Sources */,
 				C06DAABF19D677DA008778C2 /* DrawingViewController.swift in Sources */,

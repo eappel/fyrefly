@@ -13,6 +13,11 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var loginview = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
+        
+        presentViewController(loginview, animated: false, completion: nil)
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
